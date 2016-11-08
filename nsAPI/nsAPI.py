@@ -17,6 +17,8 @@ def vertrektijden(station):
     with open('vertrektijden.xml', 'w') as myXMLFile:
         myXMLFile.write(vertrektijd.text)
 
+    return True
+
 station = input('Welk station wilt u de informatie van hebben? ')
 vertrektijden(station)
 stationlijst()
