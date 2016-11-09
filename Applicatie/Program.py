@@ -1,8 +1,6 @@
 import tkinter as tk
-
 from pages.Reisoverzicht import *
 from pages.Start import *
-
 
 class Program(tk.Frame):
 
@@ -14,7 +12,7 @@ class Program(tk.Frame):
     tintColor = kwargs.get("tintColor", "#2007FF")
     startStation = kwargs.get('startStation', "Utrecht")
 
-    startPage = Start(self)
+    startPage = Start(self, backgroundColor=backgroundColor)
     reisoverzichtPage = ReisOverzicht(self, backgroundColor=backgroundColor, startStation=startStation)
 
     # creeër container
@@ -25,10 +23,12 @@ class Program(tk.Frame):
     startPage.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
     reisoverzichtPage.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-    test = tk.Button(startPage, text="page2", command=reisoverzichtPage.lift)
-    test.pack(side="left")
-    #startPage.lift()
-    reisoverzichtPage.lift()
+    test = tk.Button(startPage, text="Reisoverzicht", command=reisoverzichtPage.lift)
+    test.place(height=80, width=150, x=632, y=450)
+    test.config(background=tintColor)
+    startPage.lift()
+    #eisoverzichtPage.lift()
+
 
 
 

@@ -1,20 +1,22 @@
 from tkinter import *
-from pages.Page import *
+from Applicatie.pages.Page import *
 from PIL import Image, ImageTk
 
 class Start(Page):
 
   def __init__(self, *args, **kwargs):
     super(Start, self).__init__(*args, **kwargs)
-    image = Image.open("assets/ovchipkaart.png")
-    image = image.resize((150,150), Image.ANTIALIAS)
-    photo = ImageTk.PhotoImage(image)
-    label = Label(self, image=photo)
-    label.image = photo
-    label.place(x=230, y=180)
+    label1 = Label(self, text='Welkom bij de NS', font=("Calibri", 28, "bold"), background='#FFCF1A')
+    label1.place(x=250, y=60)
+
+    photo = PhotoImage(file="assets/ovchipkaart.png")
+    label2 = Label(self, image=photo, background='#FFCF1A')
+    label2.image = photo
+    label2.place(x=170, y=150)
 
     frame1 = Frame(self, width=150, height=80)
     button1 = Button(frame1, text="Ik wil naar Amsterdam")
+    button1.config(bg='blue')
 
     frame1.grid_propagate(False)
     frame1.columnconfigure(0, weight=1)
@@ -27,6 +29,7 @@ class Start(Page):
 
     frame2 = Frame(self, width=150, height=80)
     button2 = Button(frame2, text="Los kaartje kopen")
+    button2.config(bg='blue')
 
     frame2.grid_propagate(False)
     frame2.columnconfigure(0, weight=1)
@@ -38,7 +41,8 @@ class Start(Page):
     frame2.place(x=168, y=450)
 
     frame3 = Frame(self, width=150, height=80)
-    button3 = Button(frame3, text="Los kaartje kopen")
+    button3 = Button(frame3, text="Kopen Ov-Chipkaart")
+    button3.config(bg='blue')
 
     frame3.grid_propagate(False)
     frame3.columnconfigure(0, weight=1)
@@ -50,7 +54,8 @@ class Start(Page):
     frame3.place(x=323, y=450)
 
     frame4 = Frame(self, width=150, height=80)
-    button4 = Button(frame4, text="Los kaartje kopen")
+    button4 = Button(frame4, text="Ik wil naar het buitenland")
+    button4.config(bg='blue')
 
     frame4.grid_propagate(False)
     frame4.columnconfigure(0, weight=1)
@@ -61,14 +66,6 @@ class Start(Page):
 
     frame4.place(x=478, y=450)
 
-    frame5 = Frame(self, width=150, height=80)
-    button5 = Button(frame5, text="Los kaartje kopen")
 
-    frame5.grid_propagate(False)
-    frame5.columnconfigure(0, weight=1)
-    frame5.rowconfigure(0, weight=1)
 
-    frame5.grid(row=0, column=1)
-    button5.grid(sticky="wens")
 
-    frame5.place(x=632, y=450)

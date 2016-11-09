@@ -1,88 +1,53 @@
 from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
-from pages.Page import *
+import xmltodict
+from Applicatie.pages.SelectStation import *
+from Applicatie.pages.Page import *
+from Applicatie.api.nsAPI import NsRequest
 
 
 class ReisOverzicht(Page):
   def __init__(self, *args, **kwargs):
     super(ReisOverzicht, self).__init__(*args, **kwargs)
+
+    self.api_vetrek = 'http://webservices.ns.nl/ns-api-avt?station='
+    self.api_stationlijst = 'http://webservices.ns.nl/ns-api-stations-v2'
+
     self.currentStation = StringVar()
     self.backgroundColor = kwargs.get("backgroundColor")
     self.tintColor = kwargs.get("tintColor")
 
     #knop om menu mee te openen.
-    self.openMenu = Label(self, textvariable=self.currentStation)
+    titlePrefix = Label(self, text="Huidige station:", font=48, background=self.backgroundColor)
+    titlePrefix.grid(row=0, column=0, padx=2, pady=2, sticky=N+S+W)
+
+    self.openMenu = Label(self, textvariable=self.currentStation, font=48, background=self.backgroundColor)
     self.openMenu.bind('<Button-1>', self.openSelection)
+    self.openMenu.grid(row=0, column=1, padx=2, pady=2, sticky=N+S+E)
+
+
     self.currentStation.set(kwargs.get('startStation')) # bind variabele
-    self.openMenu.pack(side="top")
+    self.loadReisinfo() # toon reisinformatie de eerste keer.
 
   def openSelection(self, event=None):
-    selection = SelectStation(self, self.currentStation, self.backgroundColor)
-
-
-  def loadStations(self):
-    pass
+    SelectStation(self, self.currentStation, self.backgroundColor, self.api_stationlijst)
 
   def loadReisinfo(self):
-    pass
+    print(self.api_stationlijst+self.currentStation.get())
+    request = NsRequest(url=self.api_vetrek+self.currentStation.get(), filename="vetrektijden.xml")
+    if(request.run()): # success (200 code)
+      self.printReisinfo(filename='vetrektijden.xml')
+    else:
+      print("error")
+
+  def printReisinfo(self, filename):
+    with open(filename, 'r') as Vetrektijden:
+      vetrektijden = xmltodict.parse(Vetrektijden.read())
+      print(vetrektijden['ActueleVertrekTijden'])
+
 
   def refreshData(self, station):
-    self.currentStation.set(station)
-
-class SelectStation(Toplevel):
-  def __init__(self, parent, station, background):
-    super(SelectStation, self).__init__()
-
-    self.listboxFilter = StringVar()
-    self.listboxFilter.set("All")
-
-
-    self.listbox = Listbox(self, bg=background, relief=FLAT, bd=0)
-    self.listbox.pack(fill="both", expand=True)
-    self.fillListbox()
-
-    self.parent = parent
-    self.station = station
-    self.grab_set() # zorg ervoor dat interactie geblokkeerd is zolang dit scherm open is.
-    self.wm_title("Selecteer station")
-
-    submit = Button(self, command=self.submit)
-    #submit.pack(side="top", fill="both", expand=True)
-
-    '''
-    Voeg menu opties toe
-    '''
-    menuBar = Menu(self)
-    self.config(menu=menuBar, background=background, width=300)
-    self.generateOptions(menuBar)
-
-  def generateOptions(self, menuBar):
-
-    filterOptions = Menu(menuBar)
-    menuBar.add_cascade(label="Filter", menu=filterOptions)
-    options = ["A", "B", "C","D", "E"]
-    for filter in options:
-      filterOptions.add_command(label = filter, command=lambda filter = filter: self.filterAlphabetic(filter))
-
-  def filterAlphabetic(self, filter):
-    self.listboxFilter.set(filter)
-    self.fillListbox()
-
-  def fillListbox(self):
-    filter_mode = self.listboxFilter.get()
-    values = ["One", "Two", "Three", "Adddo"]
-    self.listbox.delete(0, END)
-
-    if (filter_mode == "All"):
-      for item in values:
-        self.listbox.insert(END, item)
-    else:
-      for item in values:
-        if item.startswith(filter_mode):
-          self.listbox.insert(END, item)
-
-
-  def submit(self):
-    self.parent.refreshData("Amsterdam")
+    self.currentStation.set(station) # update station
+    self.loadReisinfo() # laad reisinfo opnieuw
 
