@@ -1,6 +1,6 @@
 import tkinter as tk
-from pages.Reisoverzicht import *
-from pages.Start import *
+from Applicatie.pages.Reisoverzicht import *
+from Applicatie.pages.Start import *
 
 class Program(tk.Frame):
 
