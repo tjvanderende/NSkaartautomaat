@@ -62,7 +62,7 @@ while v < 11:
     Ycord = Ycord + 20
     v = v + 1
 
-    a = 1
+a = 1
 Ycord = 130
 v = 1
 while v < 11:
