@@ -26,6 +26,7 @@ class Program(tk.Frame):
     test = tk.Button(startPage, text="Reisoverzicht", command=reisoverzichtPage.lift)
     test.place(height=80, width=150, x=632, y=450)
     test.config(background=tintColor)
+
     startPage.lift()
     #eisoverzichtPage.lift()
 

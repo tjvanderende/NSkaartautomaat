@@ -5,13 +5,67 @@ import xmltodict
 from Applicatie.pages.SelectStation import *
 from Applicatie.pages.Page import *
 from Applicatie.api.nsAPI import NsRequest
-'''  titlePrefix = Label(self, text="Huidige station:", font=48, background=self.backgroundColor)
-    titlePrefix.grid(row=0, column=0, padx=2, pady=2, sticky=N + S + W)
 
-    # knop om menu mee te openen.
-    self.openMenu = Label(self, textvariable=self.currentStation, font=48, background=self.backgroundColor)
-    self.openMenu.bind('<Button-1>', self.openSelection)
-    self.openMenu.grid(row=0, column=1, padx=2, pady=2, sticky=N + S + E)'''
+'''
+Deze klasse is overgenomen vanuit:
+http://stackoverflow.com/questions/5286093/display-listbox-with-columns-using-tkinter
+'''
+class MultiColumnListbox (ttk.Treeview):
+    """use a ttk.TreeView as a multicolumn ListBox"""
+
+    def __init__(self, parent, headers, data):
+        super(MultiColumnListbox, self).__init__(parent)
+        self.headers = headers
+        self.data = data
+        self._setup_widgets()
+        self._build_tree()
+
+    def _setup_widgets(self):
+
+        self.config(columns=self.headers, show="headings")
+
+
+    def refresh(self, data):
+
+      for i in self.get_children():
+        self.delete(i)
+      for item in data:
+
+        self.insert('', 'end', values=item)
+        # adjust column's width if necessary to fit each value
+        for ix, val in enumerate(item):
+          col_w = tkFont.Font().measure(val)
+
+          if self.column(self.headers[ix], width=None) < col_w:
+            self.column(self.headers[ix], width=col_w)
+
+      self.config(height=len(data))
+
+    def _build_tree(self):
+        for col in self.headers:
+
+            self.heading(col, text=col.title(), command=lambda c=col: self.sortby(c, 0))
+
+            # adjust the column's width to the header string
+            self.column(col, width=tkFont.Font().measure(col.title()))
+
+
+        self.refresh(self.data)
+
+    def sortby(self, col, descending):
+      """sort tree contents when a column header is clicked on"""
+      # grab values to sort
+      data = [(self.set(child, col), child) \
+              for child in self.get_children('')]
+      # if the data to be sorted is numeric change to float
+      # data =  change_numeric(data)
+      # now sort the data in place
+      data.sort(reverse=descending)
+      for ix, item in enumerate(data):
+        self.move(item[1], '', ix)
+      # switch the heading so it will sort in the opposite direction
+      self.heading(col, command=lambda col=col: self.sortby(col, \
+                                                       int(not descending)))
 
 class ReisOverzicht(Page):
   def __init__(self, *args, **kwargs):
@@ -30,82 +84,40 @@ class ReisOverzicht(Page):
     self.backgroundColor = kwargs.get("backgroundColor")  # haal achtergrond kleur op
     self.tintColor = kwargs.get("tintColor")  # haal tint kleur op
 
-    # titleprefix die samen met self.openmenu de titel vormt.
 
 
     self.currentStation.set(kwargs.get('startStation'))  # bind variabele met start station
-    self.loadReisinfo()  # toon reisinformatie de eerste keer.'''
-    w = Canvas(self, width=800, height=600, bg="black")
-    w.pack()
+    #self.loadReisinfo()  # toon reisinformatie de eerste keer.'''
+    #w = Canvas(self, width=800, height=600, bg="black")
+    #w.pack()
+    self.headers = ['Tijd', 'Naar', 'Vervoerder', 'Spoor']
 
-    w.create_rectangle(5, 5, 795, 595, fill="#FFCF1A")
-    w.create_rectangle(0, 70, 800, 120, fill="black")
-    w.create_rectangle(5, 75, 795, 115, fill="white")
-    w.create_rectangle(140, 75, 145, 800, fill="black")
-    w.create_rectangle(360, 75, 365, 800, fill="black")
-    w.create_rectangle(640, 75, 645, 800, fill="black")
-    self.openMenu = Label(self, textvariable=self.currentStation, font=("Calibri", 28, "bold"), background=self.backgroundColor)
+
+
+
+
+    self.listbox = MultiColumnListbox(self, self.headers, [])
+    vsb = ttk.Scrollbar(command=self.listbox.yview)
+    self.listbox.configure(yscrollcommand=vsb.set)
+
+    ttk.Style().configure("Treeview", background=self.backgroundColor,
+                          foreground="black")
+    ttk.Style().configure("Treeview.Heading",
+                          background="white",
+                          padding=12)
+
+    title = Frame(self)
+    label1 = Label(title, text='Huidige station:', font=("Calibri", 28, "bold"), background=self.backgroundColor)
+    label1.pack(side="left", anchor="nw")
+    title.pack(side="top", anchor="w")
+
+    self.openMenu = Label(title, textvariable=self.currentStation, font=("Calibri", 28, "bold"),
+                          background=self.backgroundColor)
     self.openMenu.bind('<Button-1>', self.openSelection)
+    self.openMenu.pack(side="left", anchor="n")
+    self.listbox.pack(fill='both', expand=True)
 
-    label1 = Label(self, text='Huidige station:', font=("Calibri", 28, "bold"), background=self.backgroundColor)
-    label1.place(x=20, y=10)
-    self.openMenu.place(x=270, y=10)
-
-    label2 = Label(self, text="Tijd", bg="white", font=("Calibri", 11, "bold",))
-    label2.place(x=15, y=80)
-    label3 = Label(self, text="Naar", bg="white", font=("Calibri", 11, "bold",))
-    label3.place(x=150, y=80)
-    label4 = Label(self, text="Vervoerder", bg="white", font=("Calibri", 11, "bold",))
-    label4.place(x=370, y=80)
-    label5 = Label(self, text="Spoor", bg="white", font=("Calibri", 11, "bold",))
-    label5.place(x=650, y=80)
-
-    tijd1 = Label(self, text="Tijd1", bg="#FFCF1A", font=("Calibri", 10))
-    tijd1.place(x=15, y=130)
-    tijd2 = Label(self, text="Tijd2", bg="#FFCF1A", font=("Calibri", 10))
-    tijd2.place(x=15, y=150)
-    tijd3 = Label(self, text="Tijd3", bg="#FFCF1A", font=("Calibri", 10))
-    tijd3.place(x=15, y=170)
-    tijd4 = Label(self, text="Tijd4", bg="#FFCF1A", font=("Calibri", 10))
-    tijd4.place(x=15, y=190)
-    tijd5 = Label(self, text="Tijd5", bg="#FFCF1A", font=("Calibri", 10))
-    tijd5.place(x=15, y=210)
-
-    naar1 = Label(self, text="Naar1", bg="#FFCF1A", font=("Calibri", 10))
-    naar1.place(x=150, y=130)
-    naar2 = Label(self, text="Naar2", bg="#FFCF1A", font=("Calibri", 10))
-    naar2.place(x=150, y=150)
-    naar3 = Label(self, text="Naar3", bg="#FFCF1A", font=("Calibri", 10))
-    naar3.place(x=150, y=170)
-    naar4 = Label(self, text="Naar4", bg="#FFCF1A", font=("Calibri", 10))
-    naar4.place(x=150, y=190)
-    naar5 = Label(self, text="Naar5", bg="#FFCF1A", font=("Calibri", 10))
-    naar5.place(x=150, y=210)
-
-    # even een loop geknald
-    c = 1
-    Ycord = 130
-    v = 1
-    while v < 11:
-      C = str(c)
-      Xcord = 370
-      v1 = Label(self, text="Vervoerder" + C, bg="#FFCF1A", font=("Calibri", 10))
-      v1.place(x=Xcord, y=Ycord)
-      c = c + 1
-      Ycord = Ycord + 20
-      v = v + 1
-
-    '''a = 1
-    Ycord = 130
-    v = 1
-    while v < 11:
-      A = str(a)
-      Xcord = 650
-      v1 = Label(self, text="Spoor " + A, bg="#FFCF1A", font=("Calibri", 10))
-      v1.place(x=Xcord, y=Ycord)
-      a = a + 1
-      Ycord = Ycord + 20
-      v = v + 1 '''
+    self.pack(fill='both', expand=True)
 
     self.loadReisinfo()
 
@@ -123,18 +135,11 @@ class ReisOverzicht(Page):
     request = NsRequest(url=self.api_vetrek + self.currentStation.get(), filename="vetrektijden.xml")
     request.start()
     request.join() # blok met reisinformatie tonen totdat de data er is.
-    self.printReisinfo(filename='assets/database/vetrektijden.xml', xcord=650, key="VertrekTijd") #laad sowieso in (anders van cache).
-    #self.printReisinfo(filename='assets/database/vetrektijden.xml', xcord=650, key="VertrekTijd") #laad sowieso in (anders van cache).
-
-   # if (not request.run()):  # anders dan code 200 (success)
-    #  print("error")
+    self.printReisinfo(filename='assets/database/vetrektijden.xml', key="VertrekTijd") #laad sowieso in (anders van cache).
 
 
-  def printReisinfo(self, filename, xcord, key):
-    ycord = 130
-
-    v1 = Label(self, text="test", bg="blue", font=("Calibri", 10))
-    v1.place(x=650, y=130)
+  def printReisinfo(self, filename, key):
+    list = []
     """
     Haal de data op uit de database (file).
     :param filename: .xml file die gebruikt wordt om de data uit te lezen.
@@ -146,13 +151,14 @@ class ReisOverzicht(Page):
         vertrekkendeTreinen = tijden['VertrekkendeTrein']
 
         for vertrekkendeTrein in vertrekkendeTreinen:
-          print(vetrre)
-          v1 = Label(self, text=vertrekkendeTrein[key], bg=self.backgroundColor, font=("Calibri", 10))
-          v1.place(x=xcord, y=ycord)
-          ycord += 20
+          total = [vertrekkendeTrein['VertrekTijd']]
+          total.append(vertrekkendeTrein['EindBestemming'])
+          total.append(vertrekkendeTrein['Vervoerder'])
+          total.append(vertrekkendeTrein['VertrekSpoor']['#text'])
+          list.append(total)
 
 
-
+        self.listbox.refresh(list)
     except FileNotFoundError:
       print("File could not be loaded")
     except KeyError:
