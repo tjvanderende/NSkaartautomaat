@@ -38,6 +38,7 @@ class SelectStation(Toplevel):
     #laad de data in
     self.loadStations()
 
+
   def loadStations(self):
     """
     Gebruik de NsRequest klasse om de stationlijst te laden.
