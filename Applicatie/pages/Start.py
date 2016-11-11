@@ -1,5 +1,5 @@
 from tkinter import *
-from Applicatie.pages.Page import *
+from pages.Page import *
 from PIL import Image, ImageTk
 
 class Start(Page):
@@ -53,54 +53,6 @@ class Start(Page):
     self.buttonFrame.rowconfigure(1, weight=1)
     self.buttonFrame.pack(fill='both', anchor='n', side=TOP, expand=True)
     self.buttonFrame.config(background=self.backgroundColor, padx=10)
-
-    ''' frame1 = Frame(self, width=150, height=80)
-    button1 = Button(frame1, text="Ik wil naar Amsterdam")
-    button1.config(foreground=self.backgroundColor, bg=self.tintColor)
-
-    frame1.columnconfigure(0, weight=1)
-    frame1.rowconfigure(0, weight=1)
-
-    frame1.grid(row=0, column=1)
-    button1.grid(sticky="wens")
-
-    frame1.place(x=15, y=450)
-
-    frame2 = Frame(self, width=150, height=80)
-    button2 = Button(frame2, text="Los kaartje kopen")
-    button2.config(foreground=self.backgroundColor, bg=self.tintColor)
-
-    frame2.columnconfigure(0, weight=1)
-    frame2.rowconfigure(0, weight=1)
-
-    frame2.grid(row=0, column=1)
-    button2.grid(sticky="wens")
-
-    frame2.place(x=168, y=450)
-
-    frame3 = Frame(self, width=150, height=80)
-    button3 = Button(frame3, text="Kopen Ov-Chipkaart")
-    button3.config(foreground=self.backgroundColor, bg=self.tintColor)
-
-    frame3.columnconfigure(0, weight=1)
-    frame3.rowconfigure(0, weight=1)
-
-    frame3.grid(row=0, column=1)
-    button3.grid(sticky="wens")
-
-    frame3.place(x=323, y=450)
-
-    frame4 = Frame(self, width=150, height=80)
-    button4 = Button(frame4, text="Ik wil naar het buitenland")
-    button4.config(foreground=self.backgroundColor, bg=self.tintColor)
-
-    frame4.columnconfigure(0, weight=1)
-    frame4.rowconfigure(0, weight=1)
-
-    frame4.grid(row=0, column=1)
-    button4.grid(sticky="wens")
-
-    frame4.place(x=478, y=450) '''
 
 
 
