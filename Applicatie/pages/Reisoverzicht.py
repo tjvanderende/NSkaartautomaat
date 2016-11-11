@@ -107,26 +107,18 @@ class ReisOverzicht(Page):
                           padding=12)
 
     title = Frame(self)
-    label1 = Label(title, text='Huidige station:', font=("Calibri", 28, "bold"), background=self.backgroundColor)
+    label1 = Label(title, text='Huidige station:', font=("Calibri", 24, "bold"), background=self.backgroundColor)
     label1.pack(side="left", anchor="nw")
     title.pack(side="top", anchor="w")
 
-    self.openMenu = Label(title, textvariable=self.currentStation, font=("Calibri", 28, "bold"),
+    self.openMenu = Label(title, textvariable=self.currentStation, font=("Calibri", 24, "bold"),
                           background=self.backgroundColor)
-    self.openMenu.bind('<Button-1>', self.openSelection)
     self.openMenu.pack(side="left", anchor="n")
     self.listbox.pack(fill='both', expand=True)
 
     self.pack(fill='both', expand=True)
 
     self.loadReisinfo()
-
-  def openSelection(self, event=None):
-    """
-    Open het selectiepaneel (SelectStation)
-    :param event: deprecated
-    """
-    SelectStation(self, self.currentStation, self.backgroundColor, self.api_stationlijst)
 
   def loadReisinfo(self):
     """

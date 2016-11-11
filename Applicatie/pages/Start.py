@@ -6,6 +6,10 @@ class Start(Page):
 
   def __init__(self, *args, **kwargs):
     super(Start, self).__init__(*args, **kwargs)
+
+    self.backgroundColor = kwargs.get("backgroundColor")
+    self.tintColor = kwargs.get("tintColor")
+
     label1 = Label(self, text='Welkom bij de NS', font=("Calibri", 28, "bold"), background='#FFCF1A')
     label1.place(x=250, y=60)
 
@@ -16,7 +20,7 @@ class Start(Page):
 
     frame1 = Frame(self, width=150, height=80)
     button1 = Button(frame1, text="Ik wil naar Amsterdam")
-    button1.config(bg='blue')
+    button1.config(foreground=self.backgroundColor, bg=self.tintColor)
 
     frame1.grid_propagate(False)
     frame1.columnconfigure(0, weight=1)
@@ -29,7 +33,7 @@ class Start(Page):
 
     frame2 = Frame(self, width=150, height=80)
     button2 = Button(frame2, text="Los kaartje kopen")
-    button2.config(bg='blue')
+    button2.config(foreground=self.backgroundColor, bg=self.tintColor)
 
     frame2.grid_propagate(False)
     frame2.columnconfigure(0, weight=1)
@@ -42,7 +46,7 @@ class Start(Page):
 
     frame3 = Frame(self, width=150, height=80)
     button3 = Button(frame3, text="Kopen Ov-Chipkaart")
-    button3.config(bg='blue')
+    button3.config(foreground=self.backgroundColor, bg=self.tintColor)
 
     frame3.grid_propagate(False)
     frame3.columnconfigure(0, weight=1)
@@ -55,7 +59,7 @@ class Start(Page):
 
     frame4 = Frame(self, width=150, height=80)
     button4 = Button(frame4, text="Ik wil naar het buitenland")
-    button4.config(bg='blue')
+    button4.config(foreground=self.backgroundColor, bg=self.tintColor)
 
     frame4.grid_propagate(False)
     frame4.columnconfigure(0, weight=1)
