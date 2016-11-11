@@ -52,7 +52,7 @@ class Start(Page):
     self.buttonFrame.rowconfigure(0, weight=1)
     self.buttonFrame.rowconfigure(1, weight=1)
     self.buttonFrame.pack(fill='both', anchor='n', side=TOP, expand=True)
-    self.buttonFrame.config(background=self.backgroundColor, padx=50)
+    self.buttonFrame.config(background=self.backgroundColor, padx=10)
 
     ''' frame1 = Frame(self, width=150, height=80)
     button1 = Button(frame1, text="Ik wil naar Amsterdam")
