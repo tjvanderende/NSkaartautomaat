@@ -9,6 +9,7 @@ Zodat er eigenlijk een lokale database wordt gegenereerd en de API ook zonder in
 class NsRequest (threading.Thread):
     def __init__(self, url, filename):
       """
+      init functie van threading.
 
       :param url: URI van de NS api die ingeladen moet worden
       :param filename: File waar de data in opgeslagen moet worden.
@@ -20,6 +21,9 @@ class NsRequest (threading.Thread):
       self.filename = filePath+filename
 
     def request(self):
+        """
+        request aan de NS API server doen en in een xml file zetten voor offline gebruik.
+        """
         try:
           stations = requests.get(self.url, auth=self.auth_details)
           with open(self.filename, 'w', encoding='utf-8') as stationsXML:
