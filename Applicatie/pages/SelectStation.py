@@ -115,6 +115,7 @@ class SelectStation(Page):
       :param letter: een string van 1 letter waarop wordt gefilterd
       """
       stationList = []
+      stationListLang = []
       buttons = []
       counter = 0
       self.frame1.destroy() #frame leegmaken door te verwijderen en nieuwe aan te maken
@@ -124,12 +125,14 @@ class SelectStation(Page):
       for n in range(len(self.valuesLang)):
           if self.valuesLang[n].startswith(letter): #beginletter check voor volledige naam
               stationList.append(self.valuesMiddel[n])
+              stationListLang.append(self.valuesLang[n])
           elif self.valuesMiddel[n].startswith(letter): #beginletter check voor middellange naam
               stationList.append(self.valuesMiddel[n])
+              stationListLang.append(self.valuesLang[n])
       for i in range(int(math.ceil(len(stationList)/6))): #for loop voor aantal rows van de grid
           if len(stationList)-counter >= 6:
               for j in range(6): #aantal columns
-                  buttons.append(tk.Button(self, text=stationList[counter],font=("Calibri", 10, "bold"), foreground=self.backgroundColor, background=self.tintColor, width=16, command=lambda counter=counter:self.parent.refreshData(stationList[counter])))
+                  buttons.append(tk.Button(self, text=stationList[counter],font=("Calibri", 10, "bold"), foreground=self.backgroundColor, background=self.tintColor, width=16, command=lambda counter=counter:self.parent.refreshData(stationListLang[counter])))
                   buttons[counter].grid(column=j,row=i, padx=5, pady=5, in_=self.frame1)
                   counter += 1
           elif len(stationList)-1-counter < 6:
