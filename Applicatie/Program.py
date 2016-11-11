@@ -10,7 +10,7 @@ class Program(tk.Frame):
     # config
     backgroundColor = kwargs.get('backgroundColor', "#FFCF1A")
     tintColor = kwargs.get("tintColor", "#2007FF")
-    startStation = kwargs.get('startStation', "Utrecht")
+    startStation = kwargs.get('startStation', "Utrecht Centraal")
 
     startPage = Start(self, backgroundColor=backgroundColor, tintColor=tintColor)
     reisoverzichtPage = ReisOverzicht(self, backgroundColor=backgroundColor, startStation=startStation)
@@ -57,7 +57,7 @@ class Program(tk.Frame):
 root = tk.Tk()
 root.minsize(800, 600)
 root.title("NS kaart automaat")
-main = Program(root, startStation="Utrecht", backgroundColor="#FFCF1A", tintColor="#2007FF")
+main = Program(root, startStation="Utrecht Centraal", backgroundColor="#FFCF1A", tintColor="#2007FF")
 
 main.pack(side="top", fill="both", expand=True)
 
