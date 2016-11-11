@@ -163,5 +163,10 @@ class ReisOverzicht(Page):
     self.loadReisinfo()  # laad reisinfo opnieuw
 
   def formatDate(self, date):
+    """
+
+    :param date: String datum + tijd.
+    :return: De tijd die weergeven is als HH:MM (String).
+    """
     date = parser.parse(date)
     return date.strftime('%H:%M')

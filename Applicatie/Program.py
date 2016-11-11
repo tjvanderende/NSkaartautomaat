@@ -26,8 +26,8 @@ class Program(tk.Frame):
     selectstationPage.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
     #plaats Reisoverzicht button op startPage
-    test = tk.Button(startPage, text="Reisoverzicht", command=reisoverzichtPage.lift)
-    test.place(height=80, width=150, x=632, y=450)
+    test = tk.Button(startPage.buttonFrame, width=150, text="Reisoverzicht", command=reisoverzichtPage.lift)
+    test.grid(row=0, column=4, sticky=N + S + E + W, padx=5)
     test.config(foreground=backgroundColor, background=tintColor)
 
     #plaats selectStation button op reisoverzichtPage
