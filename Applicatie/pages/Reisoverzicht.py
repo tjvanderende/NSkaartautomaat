@@ -5,6 +5,8 @@ import xmltodict
 from Applicatie.pages.SelectStation import *
 from Applicatie.pages.Page import *
 from Applicatie.api.nsAPI import NsRequest
+import datetime
+from dateutil import parser
 
 '''
 Deze klasse is overgenomen vanuit:
@@ -138,7 +140,7 @@ class ReisOverzicht(Page):
         vertrekkendeTreinen = tijden['VertrekkendeTrein']
 
         for vertrekkendeTrein in vertrekkendeTreinen:
-          total = [vertrekkendeTrein['VertrekTijd']]
+          total = [self.formatDate(vertrekkendeTrein['VertrekTijd'])]
           total.append(vertrekkendeTrein['EindBestemming'])
           total.append(vertrekkendeTrein['Vervoerder'])
           total.append(vertrekkendeTrein['VertrekSpoor']['#text'])
@@ -159,3 +161,7 @@ class ReisOverzicht(Page):
     """
     self.currentStation.set(station)  # update station
     self.loadReisinfo()  # laad reisinfo opnieuw
+
+  def formatDate(self, date):
+    date = parser.parse(date)
+    return date.strftime('%H:%M')
