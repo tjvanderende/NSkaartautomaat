@@ -5,16 +5,21 @@ from PIL import Image, ImageTk
 class Start(Page):
 
   def __init__(self, *args, **kwargs):
+    """
+    :param: backgroundColor (string), achtergrond kleur
+    :param: tintColor (string), titn kleur (knop kleur).
+    :rtype: object
+    """
     super(Start, self).__init__(*args, **kwargs)
 
     self.backgroundColor = kwargs.get("backgroundColor")
     self.tintColor = kwargs.get("tintColor")
 
-    label1 = Label(self, text='Welkom bij de NS', font=("Calibri", 28, "bold"), background='#FFCF1A')
+    label1 = Label(self, text='Welkom bij de NS', font=("Calibri", 28, "bold"), background=self.backgroundColor)
     label1.place(x=250, y=60)
 
     photo = PhotoImage(file="assets/ovchipkaart.png")
-    label2 = Label(self, image=photo, background='#FFCF1A')
+    label2 = Label(self, image=photo, background=self.backgroundColor)
     label2.image = photo
     label2.place(x=170, y=150)
 

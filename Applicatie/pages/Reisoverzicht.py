@@ -92,14 +92,6 @@ class ReisOverzicht(Page):
     #w.pack()
     self.headers = ['Tijd', 'Naar', 'Vervoerder', 'Spoor']
 
-
-
-
-
-    self.listbox = MultiColumnListbox(self, self.headers, [])
-    vsb = ttk.Scrollbar(command=self.listbox.yview)
-    self.listbox.configure(yscrollcommand=vsb.set)
-
     ttk.Style().configure("Treeview", background=self.backgroundColor,
                           foreground="black")
     ttk.Style().configure("Treeview.Heading",
@@ -107,6 +99,7 @@ class ReisOverzicht(Page):
                           padding=12)
 
     title = Frame(self)
+
     label1 = Label(title, text='Huidige station:', font=("Calibri", 24, "bold"), background=self.backgroundColor)
     label1.pack(side="left", anchor="nw")
     title.pack(side="top", anchor="w")
@@ -114,8 +107,9 @@ class ReisOverzicht(Page):
     self.openMenu = Label(title, textvariable=self.currentStation, font=("Calibri", 24, "bold"),
                           background=self.backgroundColor)
     self.openMenu.pack(side="left", anchor="n")
-    self.listbox.pack(fill='both', expand=True)
 
+    self.treeview = MultiColumnListbox(self, self.headers, [])
+    self.treeview.pack(fill='x')
     self.pack(fill='both', expand=True)
 
     self.loadReisinfo()
@@ -131,11 +125,12 @@ class ReisOverzicht(Page):
 
 
   def printReisinfo(self, filename, key):
-    list = []
     """
     Haal de data op uit de database (file).
     :param filename: .xml file die gebruikt wordt om de data uit te lezen.
     """
+    list = []
+
     try:
       with open(filename, 'r') as Vetrektijden:
         vetrektijden = xmltodict.parse(Vetrektijden.read())
@@ -150,7 +145,7 @@ class ReisOverzicht(Page):
           list.append(total)
 
 
-        self.listbox.refresh(list)
+        self.treeview.refresh(list)
     except FileNotFoundError:
       print("File could not be loaded")
     except KeyError:

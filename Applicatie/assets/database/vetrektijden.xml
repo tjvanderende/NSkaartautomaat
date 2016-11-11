@@ -5,17 +5,17 @@
 <ActueleVertrekTijden>
 
 	<VertrekkendeTrein>
-		<RitNummer>7970</RitNummer>
-		<VertrekTijd>2016-11-10T18:57:00+0100</VertrekTijd>
+		<RitNummer>30950</RitNummer>
+		<VertrekTijd>2016-11-11T14:14:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Zwolle</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
+		<EindBestemming>Arnhem Centraal</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
-			<RouteTekst>Almelo, Wierden</RouteTekst>
+			<RouteTekst>Doetinchem, Zevenaar</RouteTekst>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">1</VertrekSpoor>
 		
@@ -23,21 +23,15 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7961</RitNummer>
-		<VertrekTijd>2016-11-10T19:03:00+0100</VertrekTijd>
-		
-			<VertrekVertraging>PT2M</VertrekVertraging>
+		<RitNummer>30943</RitNummer>
+		<VertrekTijd>2016-11-11T14:15:00+0100</VertrekTijd>
 		
 		
-			<VertrekVertragingTekst>+2 min</VertrekVertragingTekst>
-		
-		<EindBestemming>Enschede</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
-		
-			<RouteTekst>Hengelo</RouteTekst>
+		<EindBestemming>Winterswijk</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">2</VertrekSpoor>
 		
@@ -45,17 +39,33 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7063</RitNummer>
-		<VertrekTijd>2016-11-10T19:16:00+0100</VertrekTijd>
+		<RitNummer>30952</RitNummer>
+		<VertrekTijd>2016-11-11T14:44:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Enschede</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
+		<EindBestemming>Arnhem Centraal</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
-			<RouteTekst>Hengelo</RouteTekst>
+			<RouteTekst>Doetinchem, Zevenaar</RouteTekst>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">1</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>30945</RitNummer>
+		<VertrekTijd>2016-11-11T14:45:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Winterswijk</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
+		
+		
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">2</VertrekSpoor>
 		
@@ -63,35 +73,17 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7072</RitNummer>
-		<VertrekTijd>2016-11-10T19:18:00+0100</VertrekTijd>
+		<RitNummer>30954</RitNummer>
+		<VertrekTijd>2016-11-11T15:14:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Apeldoorn</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
+		<EindBestemming>Arnhem Centraal</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
-			<RouteTekst>Almelo, Wierden, Deventer</RouteTekst>
-		
-		
-			<Vervoerder>NS</Vervoerder>
-		
-		<VertrekSpoor wijziging="false">1</VertrekSpoor>
+			<RouteTekst>Doetinchem, Zevenaar</RouteTekst>
 		
 		
-	</VertrekkendeTrein>
-
-	<VertrekkendeTrein>
-		<RitNummer>7972</RitNummer>
-		<VertrekTijd>2016-11-10T19:27:00+0100</VertrekTijd>
-		
-		
-		<EindBestemming>Zwolle</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
-		
-			<RouteTekst>Almelo, Wierden</RouteTekst>
-		
-		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">1</VertrekSpoor>
 		
@@ -99,17 +91,15 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7963</RitNummer>
-		<VertrekTijd>2016-11-10T19:33:00+0100</VertrekTijd>
+		<RitNummer>30947</RitNummer>
+		<VertrekTijd>2016-11-11T15:15:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Enschede</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
-		
-			<RouteTekst>Hengelo</RouteTekst>
+		<EindBestemming>Winterswijk</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">2</VertrekSpoor>
 		
@@ -117,17 +107,17 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7074</RitNummer>
-		<VertrekTijd>2016-11-10T19:41:00+0100</VertrekTijd>
+		<RitNummer>30956</RitNummer>
+		<VertrekTijd>2016-11-11T15:44:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Apeldoorn</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
+		<EindBestemming>Arnhem Centraal</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
-			<RouteTekst>Almelo, Wierden, Deventer</RouteTekst>
+			<RouteTekst>Doetinchem, Zevenaar</RouteTekst>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">1</VertrekSpoor>
 		
@@ -135,17 +125,15 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7065</RitNummer>
-		<VertrekTijd>2016-11-10T19:46:00+0100</VertrekTijd>
+		<RitNummer>30949</RitNummer>
+		<VertrekTijd>2016-11-11T15:45:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Enschede</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
-		
-			<RouteTekst>Hengelo</RouteTekst>
+		<EindBestemming>Winterswijk</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">2</VertrekSpoor>
 		
@@ -153,17 +141,17 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7974</RitNummer>
-		<VertrekTijd>2016-11-10T19:57:00+0100</VertrekTijd>
+		<RitNummer>30958</RitNummer>
+		<VertrekTijd>2016-11-11T16:14:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Zwolle</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
+		<EindBestemming>Arnhem Centraal</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
-			<RouteTekst>Almelo, Wierden</RouteTekst>
+			<RouteTekst>Doetinchem, Zevenaar</RouteTekst>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">1</VertrekSpoor>
 		
@@ -171,17 +159,15 @@
 	</VertrekkendeTrein>
 
 	<VertrekkendeTrein>
-		<RitNummer>7965</RitNummer>
-		<VertrekTijd>2016-11-10T20:03:00+0100</VertrekTijd>
+		<RitNummer>30951</RitNummer>
+		<VertrekTijd>2016-11-11T16:15:00+0100</VertrekTijd>
 		
 		
-		<EindBestemming>Enschede</EindBestemming>
-		<TreinSoort>Sprinter</TreinSoort>
-		
-			<RouteTekst>Hengelo</RouteTekst>
+		<EindBestemming>Winterswijk</EindBestemming>
+		<TreinSoort>stoptrein</TreinSoort>
 		
 		
-			<Vervoerder>NS</Vervoerder>
+			<Vervoerder>Arriva</Vervoerder>
 		
 		<VertrekSpoor wijziging="false">2</VertrekSpoor>
 		
