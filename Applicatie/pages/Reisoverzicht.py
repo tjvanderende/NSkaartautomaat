@@ -154,7 +154,7 @@ class ReisOverzicht(Page):
     except FileNotFoundError:
       print("File could not be loaded")
     except KeyError:
-      print("Error")
+      print("A Key Error has occurred")
 
   def refreshData(self, station):
     """

@@ -20,10 +20,20 @@ class NsRequest (threading.Thread):
       self.filename = filePath+filename
 
     def request(self):
-        stations = requests.get(self.url, auth=self.auth_details)
-        with open(self.filename, 'w', encoding='utf-8') as stationsXML:
+        try:
+          stations = requests.get(self.url, auth=self.auth_details)
+          with open(self.filename, 'w', encoding='utf-8') as stationsXML:
             stationsXML.write(stations.text)
-        return stations.status_code == 200
+        except requests.HTTPError:
+            print('An HTTP error has occurred')
+        except FileNotFoundError:
+            print('File could not be found')
+        except KeyError:
+            print('A Key Error has occurred')
+        except requests.ConnectionError:
+            print('A Connection Error has occurred')
+        except requests.Timeout:
+            print('Either the connection has timed out, or the server did not send any data in the allotted time.')
 
     def run(self):
       return self.request()

@@ -100,13 +100,18 @@ class SelectStation(Page):
     Vul de value lijsten met alle stations in Nederland
     :param filename: Een xml file waar de data in is opgeslagen
     """
-    with open(filename, 'r') as Stations: # open filename met reading
-      dictobject = xmltodict.parse(Stations.read())
-      stations = dictobject['Stations'] # haal met de sleutel de data op
-      for value in stations['Station']: #loop door alle stations
-        if value['Land'] == 'NL':
-          self.valuesLang.append(value['Namen']['Lang'])
-          self.valuesMiddel.append(value['Namen']['Middel'])
+    try:
+      with open(filename, 'r') as Stations:  # open filename met reading
+        dictobject = xmltodict.parse(Stations.read())
+        stations = dictobject['Stations']  # haal met de sleutel de data op
+        for value in stations['Station']:  #loop door alle stations
+          if value['Land'] == 'NL':
+            self.valuesLang.append(value['Namen']['Lang'])
+            self.valuesMiddel.append(value['Namen']['Middel'])
+    except FileNotFoundError:
+        print('File could not be loaded')
+    except KeyError:
+        print('A Key Error has occurred')
 
   def showStations(self, letter):
       """
