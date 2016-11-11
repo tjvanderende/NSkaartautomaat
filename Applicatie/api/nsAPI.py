@@ -20,7 +20,7 @@ class NsRequest (threading.Thread):
       self.url = url
       self.filename = filePath+filename
 
-    def request(self):
+    def _request(self):
         """
         request aan de NS API server doen en in een xml file zetten voor offline gebruik.
         """
@@ -40,4 +40,4 @@ class NsRequest (threading.Thread):
             print('Either the connection has timed out, or the server did not send any data in the allotted time.')
 
     def run(self):
-      return self.request()
+      return self._request()
