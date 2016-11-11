@@ -102,7 +102,7 @@ class ReisOverzicht(Page):
 
     title = Frame(self)
 
-    label1 = Label(title, text='Huidige station:', font=("Calibri", 24, "bold"), background=self.backgroundColor)
+    label1 = Label(title, text='Station:', font=("Calibri", 24, "bold"), background=self.backgroundColor)
     label1.pack(side="left", anchor="nw")
     title.pack(side="top", anchor="w")
 
